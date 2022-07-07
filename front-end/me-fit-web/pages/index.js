@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Button from '../src/components/Button'
-import InputText from '../src/components/InputText'
+import Text from '../src/components/InputText'
 
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <Button>Adicionar</Button>
-          <InputText type="text" placeholder="Name" />
+          <Text type="text" placeholder="Name"/>
         </div>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>

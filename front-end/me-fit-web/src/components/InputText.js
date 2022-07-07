@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {useState} from 'react';
 
 const InputText = styled.input`
   font-size: 18px;
@@ -19,4 +20,32 @@ const InputText = styled.input`
   }
 `;
 
-export default InputText;
+
+const Text = () => { 
+
+  const [message, setMessage] = useState('');
+  const [asterisk, setAsterisk] = useState('*');
+
+  const handleChange = event => {
+    event.preventDefault();
+    setMessage(event.target.value);
+
+    if (message.length !== 0) {
+      setAsterisk('');
+      console.log('input value is NOT empty -' + asterisk);
+    } else {
+      setAsterisk('*')
+      console.log('input value is empty -'+asterisk);
+    }
+
+  };
+
+  return (
+    <div>
+    <InputText onChange={handleChange} />{asterisk} {message}
+    </div>
+  )
+ 
+}
+
+export default Text;
