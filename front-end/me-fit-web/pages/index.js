@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Button from '../src/components/Button'
 import Text from '../src/components/InputText'
+import {BigInputText, SmallInputText} from '../src/components/Input.styles'
 
 
 export default function Home() {
@@ -18,6 +19,14 @@ export default function Home() {
         <div>
           <Button>Adicionar</Button>
           <Text type="text" placeholder="Name"/>
+          <BigInputText cType="text" cPlaceholder="Teste" cMandatory/>
+          <SmallInputText cType="text" cPlaceholder="Texto não obrigatório"/>
+          <BigInputText cType="email" cPlaceholder="E-mail" cMandatory/>
+          <BigInputText cType="password" cPlaceholder="Senha" cMandatory/>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
         </div>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
