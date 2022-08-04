@@ -8,7 +8,7 @@ const Button = styled.button`
   color: #FFFFFF;
   border-radius: 3px;
   cursor: pointer;
-  text-align: center
+  text-align: center;
   width: 82px;
   height: 33px;
 `;
