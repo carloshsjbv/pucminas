@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Button from '../src/components/Button'
-import Text from '../src/components/InputText'
 import {BigInputText, SmallInputText} from '../src/components/Input.styles'
 
 
@@ -18,7 +17,6 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <Button>Adicionar</Button>
-          <Text type="text" placeholder="Name"/>
           <BigInputText cType="text" cPlaceholder="Teste" cMandatory/>
           <SmallInputText cType="text" cPlaceholder="Texto não obrigatório"/>
           <BigInputText cType="email" cPlaceholder="E-mail" cMandatory/>
