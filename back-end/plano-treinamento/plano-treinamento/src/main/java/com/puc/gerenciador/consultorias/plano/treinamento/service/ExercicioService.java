@@ -7,8 +7,10 @@ import com.puc.gerenciador.consultorias.plano.treinamento.repository.ExercicioRe
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ExercicioService {
@@ -31,8 +33,10 @@ public class ExercicioService {
         return repository.save(entity);
     }
 
-    public List<ExercicioEntity> listarExercicios() {
-        return repository.findAll();
+    public List<ExercicioEntity> listarExercicios(@Valid EnumGrupoMuscular enumGrupoMuscular) {
+
+        return Objects.isNull(enumGrupoMuscular) ? repository.findAll() : repository.findByGrupoMuscular(enumGrupoMuscular);
+
     }
 
     @Transactional

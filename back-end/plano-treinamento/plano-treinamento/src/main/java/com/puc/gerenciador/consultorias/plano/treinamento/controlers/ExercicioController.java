@@ -1,5 +1,6 @@
 package com.puc.gerenciador.consultorias.plano.treinamento.controlers;
 
+import com.puc.gerenciador.consultorias.plano.treinamento.entity.EnumGrupoMuscular;
 import com.puc.gerenciador.consultorias.plano.treinamento.entity.ExercicioEntity;
 import com.puc.gerenciador.consultorias.plano.treinamento.model.request.ExercicioRequest;
 import com.puc.gerenciador.consultorias.plano.treinamento.service.ExercicioService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,8 +31,10 @@ public class ExercicioController {
     }
 
     @GetMapping
-    public List<ExercicioEntity> getExercicios() {
-        return service.listarExercicios();
+    public List<ExercicioEntity> getExercicios(
+            @RequestParam(required = false) @Valid EnumGrupoMuscular enumGrupoMuscular
+    ) {
+        return service.listarExercicios(enumGrupoMuscular);
     }
 
     @PatchMapping
