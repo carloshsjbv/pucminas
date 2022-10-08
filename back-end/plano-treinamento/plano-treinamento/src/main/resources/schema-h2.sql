@@ -1,51 +1,39 @@
-CREATE SCHEMA treinamentos;
+CREATE SCHEMA `treinamentos`;
 
 CREATE TABLE `treinamentos`.`plano_treino` (
                                                `id` int PRIMARY KEY AUTO_INCREMENT,
                                                `data_criacao` date,
-                                               `user_id` int,
-                                               `nome_treino` varchar(255),
-                                               `repeticoes` int,
-                                               `series` int,
-                                               `data_inicio` date,
-                                               `data_fim` date,
-                                               `active` boolean,
-                                               PRIMARY KEY (`id`)
+                                               `user_id` int NOT NULL,
+                                               `repeticoes` int NOT NULL,
+                                               `series` int NOT NULL,
+                                               `data_inicio` date NOT NULL,
+                                               `data_fim` date NOT NULL,
+                                               `active` boolean
 );
 
 CREATE TABLE `treinamentos`.`dia_treinamento` (
                                                   `id` int PRIMARY KEY AUTO_INCREMENT,
                                                   `data_criacao` date,
-                                                  `dia_semana` varchar(255),
-                                                  `exercicio` int,
-                                                  `plano_treino_id` int,
-                                                  PRIMARY KEY (`id`)
+                                                  `dia_semana` varchar(255) NOT NULL,
+                                                  `plano_treino_id` int
 );
 
 CREATE TABLE `treinamentos`.`exercicio` (
                                             `id` int PRIMARY KEY AUTO_INCREMENT,
                                             `data_criacao` date,
-                                            `nome_exercicio` varchar(255),
-                                            `grupo_muscular` ENUM ('PEITO',
-                                                'OMBRO',
-                                                'PERNA',
-                                                'PANTURRILHA',
-                                                'COSTAS',
-                                                'BICEPS',
-                                                'TRICEPS'),
-                                            `active` boolean,
-                                            PRIMARY KEY (`id`)
+                                            `nome_exercicio` varchar(255) NOT NULL,
+                                            `grupo_muscular` ENUM ('PEITO', 'OMBRO', 'PERNA', 'PANTURRILHA', 'COSTAS', 'BICEPS', 'TRICEPS') NOT NULL,
+                                            `active` boolean
+);
+
+CREATE TABLE `treinamentos`.`dia_treinamento_x_exercicio` (
+                                                              `exercicio_id` int NOT NULL,
+                                                              `dia_treinamento_id` int NOT NULL,
+                                                              PRIMARY KEY (`dia_treinamento_id`, `exercicio_id`)
 );
 
 ALTER TABLE `treinamentos`.`dia_treinamento` ADD FOREIGN KEY (`plano_treino_id`) REFERENCES `treinamentos`.`plano_treino` (`id`);
 
-CREATE TABLE `treinamentos`.`dia_treinamento_exercicio` (
-                                                            `dia_treinamento_exercicio` int NOT NULL,
-                                                            `exercicio_id` int NOT NULL,
-                                                            PRIMARY KEY (`dia_treinamento_exercicio`, `exercicio_id`)
-);
+ALTER TABLE `treinamentos`.`dia_treinamento_x_exercicio` ADD FOREIGN KEY (`dia_treinamento_id`) REFERENCES `treinamentos`.`dia_treinamento` (`id`);
 
-ALTER TABLE `treinamentos`.`dia_treinamento_exercicio` ADD FOREIGN KEY (`exercicio_id`) REFERENCES `treinamentos`.`exercicio` (`id`);
-ALTER TABLE `treinamentos`.`dia_treinamento_exercicio` ADD FOREIGN KEY (`dia_treinamento_exercicio`) REFERENCES `treinamentos`.`dia_treinamento` (`id`);
-
-
+ALTER TABLE `treinamentos`.`dia_treinamento_x_exercicio` ADD FOREIGN KEY (`exercicio_id`) REFERENCES `treinamentos`.`exercicio` (`id`);

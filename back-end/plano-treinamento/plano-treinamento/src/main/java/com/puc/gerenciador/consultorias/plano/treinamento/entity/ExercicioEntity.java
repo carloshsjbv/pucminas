@@ -1,38 +1,48 @@
 package com.puc.gerenciador.consultorias.plano.treinamento.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Builder
-@Entity
-@Table(name = "EXERCICIO", schema = "TREINAMENTOS")
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
 @AllArgsConstructor
+@Entity
+@Table(name = "EXERCICIO")
 public class ExercicioEntity {
 
     @Id
+    @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "DATA_CRIACAO")
     private LocalDateTime dataCriacao;
 
+    @Column(name = "NOME_EXERCICIO", nullable = false, length = 255)
     private String nomeExercicio;
 
-    @Enumerated(EnumType.STRING)
+    @Column(name = "GRUPO_MUSCULAR", nullable = false)
     private EnumGrupoMuscular grupoMuscular;
 
-    @Builder.Default
-    private Boolean active = true;
+    @Column(name = "ACTIVE")
+    private Boolean active;
+    
+    @OneToMany(mappedBy = "exercicioByExercicioId")
+    private Collection<DiaTreinamentoXExercicioEntity> diaTreinamentoXExerciciosById;
 
 }

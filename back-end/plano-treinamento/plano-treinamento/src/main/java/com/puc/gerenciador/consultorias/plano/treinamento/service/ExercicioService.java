@@ -6,6 +6,7 @@ import com.puc.gerenciador.consultorias.plano.treinamento.model.request.Exercici
 import com.puc.gerenciador.consultorias.plano.treinamento.repository.ExercicioRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,7 +35,8 @@ public class ExercicioService {
         return repository.findAll();
     }
 
-    public ExercicioEntity atualizarExercicio(Long id, final ExercicioRequest request) {
+    @Transactional
+    public ExercicioEntity atualizarExercicio(final Long id, final ExercicioRequest request) {
 
         final ExercicioEntity entity = ExercicioEntity
                 .builder()
