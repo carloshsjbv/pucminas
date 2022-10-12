@@ -1,0 +1,9 @@
+import React from 'react';
+
+interface emptyComponentProps{}
+
+const EmptyComponent:React.FC<emptyComponentProps> = ({}) => {
+    return <div>teste</div>
+}
+
+export default EmptyComponent;
