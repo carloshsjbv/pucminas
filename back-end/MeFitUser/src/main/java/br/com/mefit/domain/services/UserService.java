@@ -1,50 +1,55 @@
 package br.com.mefit.domain.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import br.com.mefit.domain.entity.UserEntity;
 import br.com.mefit.domain.exception.NotFoundEntityException;
-import br.com.mefit.domain.model.User;
 import br.com.mefit.domain.repository.UserRepository;
 
 @Service
 public class UserService {
 
-	private UserRepository userRepository;
-
-	public UserService()
+	private final UserRepository repository;
+	
+	public UserService(final UserRepository repository)
 	{
-		System.out.println("User Service loaded");
+		System.out.println("user loaded");
+		this.repository = repository;
 	}
 	
-	public User save(User user)
+	@Transactional
+	public UserEntity save(UserEntity user)
 	{
-		return userRepository.save(user);
+		return repository.save(user);
 	}
 	
-	public User update(Long userId, User user)
+	@Transactional
+	public UserEntity update(Long userId, UserEntity user)
 	{
-		Optional<User> userBeforeUpdate = userRepository.findById(userId);
+		Optional<UserEntity> userBeforeUpdate = repository.findById(userId);
 		
 		if (userBeforeUpdate.isPresent())
 		{
 			BeanUtils.copyProperties(user, userBeforeUpdate, "id");
-			User cidadeSaved = userRepository.save(user);
+			UserEntity cidadeSaved = repository.save(user);
 			return cidadeSaved;
 		}
 		throw new NotFoundEntityException(String.format("User %d not found", userId));
 	}
 	
+	@Transactional
 	public void remove(Long userId) throws Exception
 	{
 		try 
 		{
-			userRepository.deleteById(userId);
+			repository.deleteById(userId);
 		}
 		catch(EmptyResultDataAccessException e)
 		{
@@ -57,4 +62,33 @@ public class UserService {
 			throw new Exception(e3.getMessage());
 		}
 	}
+	
+	public List<UserEntity> findAll()
+	{
+		return repository.findAll();
+	}
+	
+	
+	public UserEntity findUser(Integer status, Long userType)
+	{
+		Optional<UserEntity> user = repository.findUser(status, userType);
+		
+		if (user.isPresent())
+			return user.get();
+		
+		throw new NotFoundEntityException(String.format("User %d not found", userType));
+	}
+	
+	public UserEntity findUserByLogin(String login)
+	{
+		Optional<UserEntity> user = repository.findUserByLogin(login);
+		if (user.isPresent())
+			return user.get();
+		
+		throw new NotFoundEntityException(String.format("User %d not found", login));
+		
+	}
+	
+	
+	
 }
