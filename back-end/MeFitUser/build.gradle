@@ -37,6 +37,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	annotationProcessor 'org.projectlombok:lombok'
+	
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.11'
 }
 
 tasks.named('test') {

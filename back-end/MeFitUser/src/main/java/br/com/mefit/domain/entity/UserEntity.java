@@ -44,7 +44,6 @@ public class UserEntity {
 	@Column(name = "STATUS")
 	private Integer status;
 	 
-	@JsonIgnore
 	@OneToOne
 	private UserTypeEntity userType;
 	
