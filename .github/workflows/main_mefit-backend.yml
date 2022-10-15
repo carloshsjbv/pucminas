@@ -22,13 +22,13 @@ jobs:
           java-version: '11'
 
       - name: Build service-registration-service
-        run: cd ${{ github.workspace }}/back-end/service-registration-and-discovery && ./gradlew clean build
+        run: cd ${{ github.workspace }}/back-end/service-registration-and-discovery && chmod +x gradlew && ./gradlew clean build
 
       - name: Build MeFitUser service
-        run: cd ${{ github.workspace }}/back-end/MeFitUser && ./gradlew clean build
+        run: cd ${{ github.workspace }}/back-end/MeFitUser  && chmod +x gradlew && ./gradlew clean build
 
       - name: Build plano-treinamento
-        run: cd ${{ github.workspace }}/back-end/plano-treinamento && ./gradlew clean build
+        run: cd ${{ github.workspace }}/back-end/plano-treinamento  && chmod +x gradlew && ./gradlew clean build
 
       - name: Upload service-registration-and-discovery artifact for deployment job
         uses: actions/upload-artifact@v2
