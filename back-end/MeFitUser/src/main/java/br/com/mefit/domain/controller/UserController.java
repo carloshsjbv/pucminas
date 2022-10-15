@@ -1,7 +1,10 @@
 package br.com.mefit.domain.controller;
 
-import java.util.List;
-
+import br.com.mefit.domain.entity.UserEntity;
+import br.com.mefit.domain.exception.NotFoundEntityException;
+import br.com.mefit.domain.model.request.UserRequest;
+import br.com.mefit.domain.model.response.UserResponseObject;
+import br.com.mefit.domain.services.UserService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,10 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mefit.domain.entity.UserEntity;
-import br.com.mefit.domain.exception.NotFoundEntityException;
-import br.com.mefit.domain.model.request.UserRequest;
-import br.com.mefit.domain.services.UserService;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -110,17 +110,10 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping(value = "/{status}/{userType}")
-	public ResponseEntity<?> findByLogin(@PathVariable("status") final Integer status, @PathVariable("userType") final Long userType)
+	@GetMapping(value = "/{statusId}/{userTypeId}")
+	public List<UserResponseObject> findUsersByStatusAndUserTypeId(@PathVariable("statusId") final Integer status, @PathVariable("userTypeId") final Long userTypeId)
 	{
-		try 
-		{
-			UserEntity user = userService.findUser(status, userType);
-			return ResponseEntity.status(HttpStatus.OK).body(user);
-		}
-		catch (NotFoundEntityException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-		}
+		return userService.findUsersByStatusAndUserTypeId(status, userTypeId);
 	}
 	
 
