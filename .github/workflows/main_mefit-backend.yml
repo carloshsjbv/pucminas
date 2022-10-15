@@ -34,19 +34,19 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: service-registration-and-discovery
-          path: '${{ github.workspace }}/back-end/service-registration-and-discovery/target/*.jar'
+          path: '${{ github.workspace }}/back-end/service-registration-and-discovery/build/libs/*.jar'
 
       - name: Upload MeFitUser artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: MeFitUser
-          path: '${{ github.workspace }}/back-end/MeFitUser/target/*.jar'
+          path: '${{ github.workspace }}/back-end/MeFitUser/build/libs/*.jar'
 
       - name: Upload plano-treinamento artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: plano-treinamento
-          path: '${{ github.workspace }}/back-end/plano-treinamento/target/*.jar'
+          path: '${{ github.workspace }}/back-end/plano-treinamento/build/libs/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
