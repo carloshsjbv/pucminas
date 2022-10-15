@@ -68,4 +68,4 @@ jobs:
           app-name: 'mefit-backend'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_87482B7A6E7544B2BE4BABF06F5218F9 }}
-          package: '*.jar'
+          package: '*-SNAPSHOT.jar'
