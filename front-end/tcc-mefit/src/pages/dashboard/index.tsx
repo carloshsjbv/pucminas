@@ -27,7 +27,7 @@ const DashboardPage: React.FC = (): JSX.Element => {
             <img src={runningStudent} width={imageSize} height={imageSize} />
             <img src={runningStudent2} width={imageSize} height={imageSize} />
           </StyDashButton>
-          <StyDashButton onClick={() => changeRoute('workout-register')}>
+          <StyDashButton onClick={() => changeRoute('workout-plan-register')}>
             <span>Treinos</span>
             <img src={runningWorkout} width={imageSize} height={imageSize} />
             <img src={workoutRunning2} width={imageSize} height={imageSize} />
