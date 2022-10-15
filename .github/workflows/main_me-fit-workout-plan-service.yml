@@ -21,14 +21,14 @@ jobs:
         with:
           java-version: '11'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build plano-treinamento
+        run: cd ${{ github.workspace }}/back-end/plano-treinamento  && chmod +x gradlew && ./gradlew clean build
 
-      - name: Upload artifact for deployment job
+      - name: Upload plano-treinamento artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          name: plano-treinamento
+          path: '${{ github.workspace }}/back-end/plano-treinamento/build/libs/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: java-app
+          name: plano-treinamento
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -50,4 +50,4 @@ jobs:
           app-name: 'me-fit-workout-plan-service'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E8E66147DC1043D29219282F92B18722 }}
-          package: '*.jar'
+          package: '*SNAPSHOT.jar'

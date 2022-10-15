@@ -21,14 +21,14 @@ jobs:
         with:
           java-version: '11'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build MeFitUser service
+        run: cd ${{ github.workspace }}/back-end/MeFitUser  && chmod +x gradlew && ./gradlew clean build
 
-      - name: Upload artifact for deployment job
+      - name: Upload MeFitUser artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          name: MeFitUser
+          path: '${{ github.workspace }}/back-end/MeFitUser/build/libs/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: java-app
+          name: MeFitUser
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -50,4 +50,4 @@ jobs:
           app-name: 'me-fit-user-service'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_91DFAB60700847B29DF8EDE4A9D4D0C3 }}
-          package: '*.jar'
+          package: '*SNAPSHOT.jar'
