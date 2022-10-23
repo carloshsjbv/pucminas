@@ -51,8 +51,11 @@ public class DueWorkoutCronJob {
     }
 
     @Async
-    @Scheduled(cron = "* */1 */0 * * *")
+    @Scheduled(cron = "* * 7 * * *") // AT 07:00 EVERY DAY
     public void checkForDueWorkoutSessions() {
+
+        log.info("Check for due workout sessions JOB has started at - {} ", LocalDateTime.now());
+
         final List<User> users = userServiceClient.getUsersByStatusAndUserType(1L, 2L);
 
         final Map<Long, User> userMap = users.stream().collect(Collectors.toMap(User::getId, Function.identity()));
@@ -64,13 +67,23 @@ public class DueWorkoutCronJob {
                     true
             );
 
+            log.debug("{} workout plans found. Trying to send email ", workoutPlans.size());
+
             workoutPlans.forEach(workoutPlan -> {
                 if (workoutPlan.getEndDate().isBefore(LocalDateTime.now().minus(amountOfDaysBeforeNotificationIsSent, ChronoUnit.DAYS))) {
+
                     sendEmail(userMap, workoutPlan);
+
+                    log.info("Email sent to personalId {} regarding due workout id {} from user {}",
+                            workoutPlan.getPersonalTrainerId(), workoutPlan.getId(), workoutPlan.getUserId());
+
                 }
             });
 
         }
+
+        log.info("Check for due workout sessions JOB has ended at - {} ", LocalDateTime.now());
+
     }
 
     private void sendEmail(final Map<Long, User> userMap, final WorkoutPlanEntity workoutPlan) {

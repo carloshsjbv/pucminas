@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/v1/plano-treino")
+@RequestMapping("/v1/planos-treino")
 public class WorkoutPlan {
 
     private final WorkoutPlanService workoutPlanService;

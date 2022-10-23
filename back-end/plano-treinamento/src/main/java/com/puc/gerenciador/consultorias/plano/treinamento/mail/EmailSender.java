@@ -31,7 +31,7 @@ public class EmailSender {
     @Value("${email.sender}")
     private String sender;
 
-    private Properties emailProperties;
+    private final Properties emailProperties;
 
     public EmailSender(
             @Value("${mail.smtp.auth:true}") final String smtpAuth,
@@ -52,7 +52,7 @@ public class EmailSender {
 
     public void sendEmail(final EmailObject emailObject) {
 
-        Session session = Session.getInstance(emailProperties, new Authenticator() {
+        final Session session = Session.getInstance(emailProperties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(userName, password);
@@ -60,36 +60,39 @@ public class EmailSender {
         });
 
         try {
-
-
-            final Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(sender));
-            message.setRecipients(
-                    Message.RecipientType.TO, InternetAddress.parse(emailObject.sendTo));
-
-            message.setSubject(emailObject.subject);
-
-            final MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(emailObject.messageBody, "text/html; charset=utf-8");
-
-            Multipart multipart = new MimeMultipart();
-            multipart.addBodyPart(mimeBodyPart);
-
-            if (emailObject.hasAttachment) {
-                MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-                attachmentBodyPart.attachFile(emailObject.attachement);
-                multipart.addBodyPart(attachmentBodyPart);
-            }
-
-            message.setContent(multipart);
+            final Message message = setUpMessage(emailObject, session);
 
             Transport.send(message);
         } catch (MessagingException e) {
-            log.error("Erro ao enviar mensagem", e);
+            log.error("Error while sending email ", e);
         } catch (IOException e) {
-            log.error("Erro no envio", e);
+            log.error("IO error while sending email", e);
         }
 
+    }
+
+    private Message setUpMessage(EmailObject emailObject, Session session) throws MessagingException, IOException {
+        final Message message = new MimeMessage(session);
+
+        message.setFrom(new InternetAddress(sender));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailObject.sendTo));
+
+        message.setSubject(emailObject.subject);
+
+        final MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.setContent(emailObject.messageBody, "text/html; charset=utf-8");
+
+        final Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(mimeBodyPart);
+
+        if (emailObject.hasAttachment) {
+            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+            attachmentBodyPart.attachFile(emailObject.attachement);
+            multipart.addBodyPart(attachmentBodyPart);
+        }
+
+        message.setContent(multipart);
+        return message;
     }
 
 

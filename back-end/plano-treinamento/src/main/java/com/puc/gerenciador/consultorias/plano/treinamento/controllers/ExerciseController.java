@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/exercicio")
+@RequestMapping("/v1/exercicios")
 public class ExerciseController {
 
     private final ExerciseService service;

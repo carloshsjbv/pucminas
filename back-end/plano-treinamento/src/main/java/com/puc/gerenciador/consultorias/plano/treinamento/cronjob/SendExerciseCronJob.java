@@ -20,18 +20,17 @@ import com.puc.gerenciador.consultorias.plano.treinamento.entity.WorkoutDayEntit
 import com.puc.gerenciador.consultorias.plano.treinamento.entity.WorkoutPlanEntity;
 import com.puc.gerenciador.consultorias.plano.treinamento.mail.EmailObject;
 import com.puc.gerenciador.consultorias.plano.treinamento.mail.EmailSender;
-import com.puc.gerenciador.consultorias.plano.treinamento.repository.WorkoutPlanRepository;
 import com.puc.gerenciador.consultorias.plano.treinamento.service.WorkoutPlanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -74,7 +73,9 @@ public class SendExerciseCronJob {
 
     @Async
     @Scheduled(cron = "* */5 * * * *")
-    public void checkForDueWorkoutSessions() {
+    public void sendExercisesJob() {
+
+        log.info("Send exercise JOB has started at - {} ", LocalDateTime.now());
 
         final List<WorkoutPlanEntity> workoutPlans = workoutPlanService.findAllBySent(false);
 
@@ -107,6 +108,7 @@ public class SendExerciseCronJob {
             }
         }
 
+        log.info("Send exercise JOB has ended at - {} ", LocalDateTime.now());
 
     }
 
