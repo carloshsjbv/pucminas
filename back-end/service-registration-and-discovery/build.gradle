@@ -30,3 +30,11 @@ dependencyManagement {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootRun {
+	//bootRun.systemProperty 'spring.profiles.active', "${springProfile}"
+}
+
+bootRun {
+	//bootRun.systemProperty 'spring.profiles.active', "${springProfile}"
+}
