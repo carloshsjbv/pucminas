@@ -36,6 +36,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      run: export SPRING_PROFILES_ACTIVE=prod
     
     steps:
       - name: Download artifact from build job
@@ -51,3 +52,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9845557D9A96403B9D5A945D5A64F7D5 }}
           package: '*SNAPSHOT.jar'
+
