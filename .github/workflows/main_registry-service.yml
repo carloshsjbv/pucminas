@@ -36,7 +36,6 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-      run: export SPRING_PROFILES_ACTIVE=prod
     
     steps:
       - name: Download artifact from build job
