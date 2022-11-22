@@ -72,7 +72,7 @@ public class SendExerciseCronJob {
     }
 
     @Async
-    @Scheduled(cron = "* */5 * * * *")
+    @Scheduled(fixedDelay = 300000L)
     public void sendExercisesJob() {
 
         log.info("Send exercise JOB has started at - {} ", LocalDateTime.now());
