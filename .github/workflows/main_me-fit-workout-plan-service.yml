@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'back-end/plano-treinamento'
+      - 'back-end/plano-treinamento/*'
   workflow_dispatch:
 
 jobs:

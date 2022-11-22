@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'back-end/service-registration-and-discovery'
+      - 'back-end/service-registration-and-discovery/*'
   workflow_dispatch:
 
 jobs:
