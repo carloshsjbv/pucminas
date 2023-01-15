@@ -49,7 +49,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'me-fit-gateway'
+          app-name: 'mefit-gateway'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_91DFAB60700847B29DF8EDE4A9D4D0C3 }}
           package: '*SNAPSHOT.jar'
