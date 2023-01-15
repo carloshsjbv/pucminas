@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/exercicios")
+@RequestMapping("/v1/exercises")
 public class ExerciseController {
 
     private final ExerciseService service;
@@ -26,19 +26,19 @@ public class ExerciseController {
     }
 
     @PostMapping
-    public ExerciseEntity criarExercicio(@RequestBody final ExerciseRequest request) {
+    public ExerciseEntity createExercise(@RequestBody final ExerciseRequest request) {
         return service.saveExercise(request);
     }
 
     @GetMapping
-    public List<ExerciseEntity> getExercicios(
+    public List<ExerciseEntity> getExercises(
             @RequestParam(required = false) @Valid MuscularGroupEnum muscularGroupEnum
     ) {
         return service.getExercises(muscularGroupEnum);
     }
 
     @PatchMapping
-    public ExerciseEntity getExercicios(@RequestParam final Long id, @RequestBody final ExerciseRequest requestBody) {
+    public ExerciseEntity updateExercises(@RequestParam final Long id, @RequestBody final ExerciseRequest requestBody) {
         return service.updateExercise(id, requestBody);
     }
 
