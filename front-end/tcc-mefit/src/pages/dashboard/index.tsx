@@ -24,19 +24,19 @@ const DashboardPage: React.FC = (): JSX.Element => {
         <StyDashRow>
           <StyDashButton onClick={() => changeRoute('user-register')}>
             <span>Alunos</span>
-            <img src={runningStudent} width={imageSize} height={imageSize} />
-            <img src={runningStudent2} width={imageSize} height={imageSize} />
+            <img src={runningStudent} alt="" width={imageSize} height={imageSize} />
+            <img src={runningStudent2} alt="" width={imageSize} height={imageSize} />
           </StyDashButton>
           <StyDashButton onClick={() => changeRoute('workout-plan-register')}>
             <span>Treinos</span>
-            <img src={runningWorkout} width={imageSize} height={imageSize} />
-            <img src={workoutRunning2} width={imageSize} height={imageSize} />
+            <img src={runningWorkout} alt="" width={imageSize} height={imageSize} />
+            <img src={workoutRunning2} alt="" width={imageSize} height={imageSize} />
           </StyDashButton>
         </StyDashRow>
         <StyDashRow>
           <StyDashButton onClick={() => changeRoute('workout-register')}>
             <span>Exercícios</span>
-            <img src={workoutObject} width={imageSize} height={imageSize} />
+            <img src={workoutObject} alt="" width={imageSize} height={imageSize} />
           </StyDashButton>
         </StyDashRow>
       </StyLoginContainer>

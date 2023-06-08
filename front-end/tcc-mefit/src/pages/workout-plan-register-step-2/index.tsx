@@ -12,28 +12,25 @@ import {
   StyButtonContainer,
 } from './styles';
 
-const WorkoutPlanRegisterPage: React.FC = (): JSX.Element => {
+const WorkoutPlanRegisterStep2Page: React.FC = (): JSX.Element => {
   const { changeRoute }: any = useContext(RouteContext);
   return (
     <MainTemplate>
       <StyContainer>
         <StyRowContainer>
-          <StyTitle>Cadastro de Sessao de treinamento</StyTitle>
+          <StyTitle>Cadastro de Sessao de treinamento 2</StyTitle>
         </StyRowContainer>
         <StyRowContainer>
-          <StyInput type="text" placeholder="Data final" />
+          <StyInput type="text" placeholder="Serie" />
         </StyRowContainer>
         <StyRowContainer>
-          <StyInput type="text" placeholder="Data inicial" />
-        </StyRowContainer>
-        <StyRowContainer>
-          <StyInput type="text" placeholder="Aluno" />
+          <StyInput type="text" placeholder="Repetições" />
         </StyRowContainer>
         <StyButtonContainer>
-          <StyButton onClick={() => changeRoute('dashboard')}>
+          <StyButton onClick={() => changeRoute('workout-plan-register')}>
             CANCELAR
           </StyButton>
-          <StyButton onClick={() => changeRoute('workout-plan-register-step-2')}>
+          <StyButton onClick={() => changeRoute('workout-plan-register-step-3')} >
             SALVAR</StyButton>
         </StyButtonContainer>
       </StyContainer>
@@ -41,4 +38,4 @@ const WorkoutPlanRegisterPage: React.FC = (): JSX.Element => {
   );
 };
 
-export default WorkoutPlanRegisterPage;
+export default WorkoutPlanRegisterStep2Page;

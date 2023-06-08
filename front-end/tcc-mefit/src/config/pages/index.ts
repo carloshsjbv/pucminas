@@ -3,6 +3,8 @@ import LoginPage from '../../pages/login';
 import UserRegisterPage from '../../pages/user-register';
 import WorkoutRegisterPage from '../../pages/workout-register';
 import workoutPlanRegisterPage from '../../pages/workout-plan-register';
+import WorkoutPlanRegisterStep2Page from '../../pages/workout-plan-register-step-2'
+import workoutPlanRegisterStep3Page from '../../pages/workout-plan-register-step-3';
 import { Templates } from '../../ts/enum/page-templates';
 import { IPage, MainMenu } from '../../ts/interfaces/IPage';
 const appModule: string = 'mefit';
@@ -34,6 +36,20 @@ const appPages: IPage[] = [
     path: `/${appModule}/workout-plan-register`,
     template: Templates.PUBLIC,
     pageComponent: workoutPlanRegisterPage,
+    mainMenu: MainMenu.NONE,
+  },
+  {
+    alias: `workout-plan-register-step-2`,
+    path: `/${appModule}/workout-plan-register-step-2`,
+    template: Templates.PUBLIC,
+    pageComponent: WorkoutPlanRegisterStep2Page,
+    mainMenu: MainMenu.NONE,
+  },
+  {
+    alias: `workout-plan-register-step-3`,
+    path: `/${appModule}/workout-plan-register-step-3`,
+    template: Templates.PUBLIC,
+    pageComponent: workoutPlanRegisterStep3Page,
     mainMenu: MainMenu.NONE,
   },
   {
