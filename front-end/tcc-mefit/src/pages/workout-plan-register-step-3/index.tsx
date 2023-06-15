@@ -21,16 +21,20 @@ const WorkoutPlanRegisterStep3Page: React.FC = (): JSX.Element => {
           <StyTitle>Cadastro de Sessao de treinamento 3</StyTitle>
         </StyRowContainer>
         <StyRowContainer>
-          <StyInput type="text" placeholder="Serie" />
+          <StyInput type="text" placeholder="Dias da semana" />
         </StyRowContainer>
         <StyRowContainer>
-          <StyInput type="text" placeholder="Repetições" />
+          <StyInput type="text" placeholder="Grupo Muscular" />
+        </StyRowContainer>
+        <StyRowContainer>
+          <StyInput type="text" placeholder="Exercício" />
         </StyRowContainer>
         <StyButtonContainer>
           <StyButton onClick={() => changeRoute('workout-plan-register-step-2')}>
             CANCELAR
           </StyButton>
-          <StyButton>SALVAR</StyButton>
+          <StyButton onClick={() => changeRoute('workout-plan-register-step-4')}>
+            SALVAR</StyButton>
         </StyButtonContainer>
       </StyContainer>
     </MainTemplate>
