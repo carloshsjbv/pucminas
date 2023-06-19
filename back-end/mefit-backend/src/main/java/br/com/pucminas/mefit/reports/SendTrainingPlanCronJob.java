@@ -1,7 +1,5 @@
 package br.com.pucminas.reports;
 
-import br.com.pucminas.user.entity.EnumStatus;
-import br.com.pucminas.user.entity.UserEntity;
 import br.com.pucminas.user.service.UserService;
 import br.com.pucminas.workouts.entity.ExerciseEntity;
 import br.com.pucminas.workouts.entity.WorkoutDayEntity;
@@ -32,17 +30,13 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static br.com.pucminas.reports.DueWorkoutCronJob.TRAINEE_USER_TYPE_ID;
 
 @Slf4j
 @Component
-public class SendExerciseCronJob {
+public class SendTrainingPlanCronJob {
 
     public static final String SUBJECT_MESSAGE = "Seu treino chegou!";
 
@@ -63,7 +57,7 @@ public class SendExerciseCronJob {
 
     private final EmailSender emailSender;
 
-    public SendExerciseCronJob(
+    public SendTrainingPlanCronJob(
             final WorkoutPlanService workoutPlanService,
             final UserService userService,
             final EmailSender emailSender
@@ -74,22 +68,18 @@ public class SendExerciseCronJob {
     }
 
     @Async
-    @Scheduled(fixedDelay = 5, timeUnit = TimeUnit.MINUTES)
-    public void sendExercisesJob() {
+    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    public void sendTrainingPlanJob() {
 
-        log.info("Send exercise JOB has started at - {} ", LocalDateTime.now());
+        log.info("Send training plan JOB has started at - {} ", LocalDateTime.now());
 
         final List<WorkoutPlanEntity> workoutPlans = workoutPlanService.findAllBySent(false);
 
+        int workoutPlansSentCount = 0;
+
         if (!workoutPlans.isEmpty()) {
 
-            final List<UserEntity> users = userService.findUsersByStatusAndUserTypeId(EnumStatus.ACTIVE, TRAINEE_USER_TYPE_ID);
-
-            final Map<Long, UserEntity> userMap = users.stream().collect(Collectors.toMap(UserEntity::getId, Function.identity()));
-
-            if (!userMap.isEmpty()) {
-
-                workoutPlans.forEach(workoutPlan -> {
+                for (WorkoutPlanEntity workoutPlan : workoutPlans) {
 
                     Path filePath;
                     try {
@@ -99,18 +89,19 @@ public class SendExerciseCronJob {
                         throw new RuntimeException(e);
                     }
 
-                    sendEmail(userMap, workoutPlan, filePath.toFile());
+                    sendEmail(workoutPlan, filePath.toFile());
 
                     workoutPlan.setSent(true);
 
                     // update right after it is sent
                     workoutPlanService.updateWorkoutPlan(workoutPlan);
-                });
+
+                    workoutPlansSentCount++;
 
             }
         }
 
-        log.info("Send exercise JOB has ended at - {} ", LocalDateTime.now());
+        log.info("{} workout plans sent - Send training plan JOB has ended at - {} ", workoutPlansSentCount, LocalDateTime.now());
 
     }
 
@@ -200,13 +191,13 @@ public class SendExerciseCronJob {
         return tempPdf;
     }
 
-    private void sendEmail(final Map<Long, UserEntity> userMap, final WorkoutPlanEntity workoutPlan, final File attachment) {
+    private void sendEmail(final WorkoutPlanEntity workoutPlan, final File attachment) {
 
         final EmailObject email = EmailObject
                 .builder()
                 .subject(SUBJECT_MESSAGE)
-                .messageBody(String.format(MESSAGE_BODY, userMap.get(workoutPlan.getUserId()).getNome(), userMap.get(workoutPlan.getPersonalTrainerId()).getNome()))
-                .sendTo(userMap.get(workoutPlan.getUserId()).getLogin())
+                .messageBody(String.format(MESSAGE_BODY, workoutPlan.getUserId().getNome(), workoutPlan.getPersonalTrainerId().getNome()))
+                .sendTo(workoutPlan.getUserId().getLogin())
                 .hasAttachment(true)
                 .attachment(attachment)
                 .build();

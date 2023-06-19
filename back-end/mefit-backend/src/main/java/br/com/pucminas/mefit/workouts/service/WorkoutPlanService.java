@@ -1,5 +1,6 @@
 package br.com.pucminas.workouts.service;
 
+import br.com.pucminas.user.entity.UserEntity;
 import br.com.pucminas.workouts.dto.request.WorkoutDayRequest;
 import br.com.pucminas.workouts.dto.request.WorkoutPlanRequest;
 import br.com.pucminas.workouts.entity.ExerciseEntity;
@@ -36,8 +37,8 @@ public class WorkoutPlanService {
                 .collect(Collectors.toList());
 
         final WorkoutPlanEntity workoutPlanEntity = WorkoutPlanEntity.builder()
-                .userId(workoutPlanRequest.getUserId())
-                .personalTrainerId(workoutPlanRequest.getPersonalTrainerId())
+                .userId(UserEntity.builder().id(workoutPlanRequest.getUserId()).build())
+                .personalTrainerId(UserEntity.builder().id(workoutPlanRequest.getPersonalTrainerId()).build())
                 .createDate(LocalDateTime.now())
                 .reps(workoutPlanRequest.getReps())
                 .series(workoutPlanRequest.getSeries())

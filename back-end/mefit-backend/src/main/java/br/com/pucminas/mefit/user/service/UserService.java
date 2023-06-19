@@ -66,4 +66,8 @@ public class UserService {
     public List<UserEntity> findUsersByStatusAndUserTypeId(EnumStatus status, Long userTypeId) {
         return repository.findUsersByStatusAndUserTypeId(status, userTypeId);
     }
+
+    public UserEntity findById(Long userId) {
+        return repository.findById(userId).orElseThrow();
+    }
 }

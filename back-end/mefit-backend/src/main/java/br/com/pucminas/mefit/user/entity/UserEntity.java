@@ -45,7 +45,7 @@ public class UserEntity {
 
     @NotNull
     @Column(name = "STATUS")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private EnumStatus status;
 
     @OneToOne
