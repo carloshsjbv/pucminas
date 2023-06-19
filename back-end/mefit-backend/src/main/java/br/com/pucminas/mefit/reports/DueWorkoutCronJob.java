@@ -1,10 +1,10 @@
-package br.com.pucminas.reports;
+package br.com.pucminas.mefit.reports;
 
-import br.com.pucminas.user.entity.EnumStatus;
-import br.com.pucminas.user.entity.UserEntity;
-import br.com.pucminas.user.service.UserService;
-import br.com.pucminas.workouts.entity.WorkoutPlanEntity;
-import br.com.pucminas.workouts.service.WorkoutPlanService;
+import br.com.pucminas.mefit.user.entity.EnumStatus;
+import br.com.pucminas.mefit.user.entity.UserEntity;
+import br.com.pucminas.mefit.user.service.UserService;
+import br.com.pucminas.mefit.workouts.entity.WorkoutPlanEntity;
+import br.com.pucminas.mefit.workouts.service.WorkoutPlanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;

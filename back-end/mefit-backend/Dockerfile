@@ -10,5 +10,7 @@ COPY build/libs/mefit-backend-0.0.1-SNAPSHOT.jar app.jar
 # Expose the port on which your Spring Boot application listens
 EXPOSE 8080
 
+ENV JAVA_TOOL_OPTIONS "-agentlib:jdwp=transport=dt_socket,address=*:8801,server=y,suspend=n"
+
 # Set the entry point command to run your application
 CMD ["java", "-jar", "app.jar"]

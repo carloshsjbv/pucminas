@@ -1,4 +1,4 @@
-package br.com.pucminas.workouts.dto.request;
+package br.com.pucminas.mefit.workouts.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package br.com.pucminas.exceptions;
+package br.com.pucminas.mefit.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;

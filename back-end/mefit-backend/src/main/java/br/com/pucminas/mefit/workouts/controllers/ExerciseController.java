@@ -1,10 +1,10 @@
-package br.com.pucminas.workouts.controllers;
+package br.com.pucminas.mefit.workouts.controllers;
 
-import br.com.pucminas.workouts.dto.request.ExerciseRequest;
-import br.com.pucminas.workouts.dto.response.ExerciseResponseDTO;
-import br.com.pucminas.workouts.entity.MuscularGroupEnum;
-import br.com.pucminas.workouts.mappers.ExerciseMapper;
-import br.com.pucminas.workouts.service.ExerciseService;
+import br.com.pucminas.mefit.workouts.dto.request.ExerciseRequest;
+import br.com.pucminas.mefit.workouts.dto.response.ExerciseResponseDTO;
+import br.com.pucminas.mefit.workouts.entity.MuscularGroupEnum;
+import br.com.pucminas.mefit.workouts.mappers.ExerciseMapper;
+import br.com.pucminas.mefit.workouts.service.ExerciseService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

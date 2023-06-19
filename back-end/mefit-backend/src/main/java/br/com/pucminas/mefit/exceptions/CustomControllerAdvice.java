@@ -1,4 +1,4 @@
-package br.com.pucminas.exceptions;
+package br.com.pucminas.mefit.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpHeaders;

@@ -1,4 +1,4 @@
-package br.com.pucminas.user.dto.request;
+package br.com.pucminas.mefit.user.dto.request;
 
 
 import lombok.Builder;

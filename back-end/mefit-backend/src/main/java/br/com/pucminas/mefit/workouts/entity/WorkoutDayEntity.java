@@ -1,4 +1,4 @@
-package br.com.pucminas.workouts.entity;
+package br.com.pucminas.mefit.workouts.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,10 +1,10 @@
-package br.com.pucminas.user.service;
+package br.com.pucminas.mefit.user.service;
 
-import br.com.pucminas.user.dto.request.UserRequestDTO;
-import br.com.pucminas.user.entity.EnumStatus;
-import br.com.pucminas.user.entity.UserEntity;
-import br.com.pucminas.user.mapper.UserMapper;
-import br.com.pucminas.user.repository.UserRepository;
+import br.com.pucminas.mefit.user.dto.request.UserRequestDTO;
+import br.com.pucminas.mefit.user.entity.EnumStatus;
+import br.com.pucminas.mefit.user.entity.UserEntity;
+import br.com.pucminas.mefit.user.mapper.UserMapper;
+import br.com.pucminas.mefit.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

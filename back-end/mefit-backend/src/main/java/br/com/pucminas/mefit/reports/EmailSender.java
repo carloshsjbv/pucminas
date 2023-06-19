@@ -1,4 +1,4 @@
-package br.com.pucminas.reports;
+package br.com.pucminas.mefit.reports;
 
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;

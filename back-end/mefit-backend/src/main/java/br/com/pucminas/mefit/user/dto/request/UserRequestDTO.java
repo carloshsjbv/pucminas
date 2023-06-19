@@ -1,6 +1,6 @@
-package br.com.pucminas.user.dto.request;
+package br.com.pucminas.mefit.user.dto.request;
 
-import br.com.pucminas.user.entity.EnumStatus;
+import br.com.pucminas.mefit.user.entity.EnumStatus;
 import jakarta.validation.constraints.Null;
 import lombok.Getter;
 import lombok.Setter;

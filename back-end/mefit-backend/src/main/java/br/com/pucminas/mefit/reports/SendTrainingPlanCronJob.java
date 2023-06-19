@@ -1,10 +1,10 @@
-package br.com.pucminas.reports;
+package br.com.pucminas.mefit.reports;
 
-import br.com.pucminas.user.service.UserService;
-import br.com.pucminas.workouts.entity.ExerciseEntity;
-import br.com.pucminas.workouts.entity.WorkoutDayEntity;
-import br.com.pucminas.workouts.entity.WorkoutPlanEntity;
-import br.com.pucminas.workouts.service.WorkoutPlanService;
+import br.com.pucminas.mefit.workouts.service.WorkoutPlanService;
+import br.com.pucminas.mefit.user.service.UserService;
+import br.com.pucminas.mefit.workouts.entity.ExerciseEntity;
+import br.com.pucminas.mefit.workouts.entity.WorkoutDayEntity;
+import br.com.pucminas.mefit.workouts.entity.WorkoutPlanEntity;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.WebColors;
 import com.itextpdf.kernel.font.PdfFontFactory;

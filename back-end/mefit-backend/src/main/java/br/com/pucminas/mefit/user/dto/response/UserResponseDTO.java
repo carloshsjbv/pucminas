@@ -1,6 +1,6 @@
-package br.com.pucminas.user.dto.response;
+package br.com.pucminas.mefit.user.dto.response;
 
-import br.com.pucminas.user.entity.EnumStatus;
+import br.com.pucminas.mefit.user.entity.EnumStatus;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;

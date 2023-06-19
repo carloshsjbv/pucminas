@@ -1,8 +1,8 @@
-package br.com.pucminas.user.mapper;
+package br.com.pucminas.mefit.user.mapper;
 
-import br.com.pucminas.user.dto.request.UserRequestDTO;
-import br.com.pucminas.user.dto.response.UserResponseDTO;
-import br.com.pucminas.user.entity.UserEntity;
+import br.com.pucminas.mefit.user.dto.request.UserRequestDTO;
+import br.com.pucminas.mefit.user.dto.response.UserResponseDTO;
+import br.com.pucminas.mefit.user.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

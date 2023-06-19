@@ -1,8 +1,8 @@
-package br.com.pucminas.workouts.mappers;
+package br.com.pucminas.mefit.workouts.mappers;
 
-import br.com.pucminas.workouts.dto.request.ExerciseRequest;
-import br.com.pucminas.workouts.dto.response.ExerciseResponseDTO;
-import br.com.pucminas.workouts.entity.ExerciseEntity;
+import br.com.pucminas.mefit.workouts.dto.response.ExerciseResponseDTO;
+import br.com.pucminas.mefit.workouts.dto.request.ExerciseRequest;
+import br.com.pucminas.mefit.workouts.entity.ExerciseEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

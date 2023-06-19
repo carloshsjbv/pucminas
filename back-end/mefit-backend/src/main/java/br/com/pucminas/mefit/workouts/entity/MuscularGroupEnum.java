@@ -1,4 +1,4 @@
-package br.com.pucminas.workouts.entity;
+package br.com.pucminas.mefit.workouts.entity;
 
 public enum MuscularGroupEnum {
 

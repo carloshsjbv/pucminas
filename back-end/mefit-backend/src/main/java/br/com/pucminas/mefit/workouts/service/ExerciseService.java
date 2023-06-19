@@ -1,10 +1,10 @@
-package br.com.pucminas.workouts.service;
+package br.com.pucminas.mefit.workouts.service;
 
-import br.com.pucminas.workouts.dto.request.ExerciseRequest;
-import br.com.pucminas.workouts.entity.ExerciseEntity;
-import br.com.pucminas.workouts.entity.MuscularGroupEnum;
-import br.com.pucminas.workouts.mappers.ExerciseMapper;
-import br.com.pucminas.workouts.repository.ExerciseRepository;
+import br.com.pucminas.mefit.workouts.dto.request.ExerciseRequest;
+import br.com.pucminas.mefit.workouts.entity.ExerciseEntity;
+import br.com.pucminas.mefit.workouts.entity.MuscularGroupEnum;
+import br.com.pucminas.mefit.workouts.mappers.ExerciseMapper;
+import br.com.pucminas.mefit.workouts.repository.ExerciseRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

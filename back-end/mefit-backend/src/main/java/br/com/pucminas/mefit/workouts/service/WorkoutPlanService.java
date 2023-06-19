@@ -1,12 +1,12 @@
-package br.com.pucminas.workouts.service;
+package br.com.pucminas.mefit.workouts.service;
 
-import br.com.pucminas.user.entity.UserEntity;
-import br.com.pucminas.workouts.dto.request.WorkoutDayRequest;
-import br.com.pucminas.workouts.dto.request.WorkoutPlanRequest;
-import br.com.pucminas.workouts.entity.ExerciseEntity;
-import br.com.pucminas.workouts.entity.WorkoutDayEntity;
-import br.com.pucminas.workouts.entity.WorkoutPlanEntity;
-import br.com.pucminas.workouts.repository.WorkoutPlanRepository;
+import br.com.pucminas.mefit.user.entity.UserEntity;
+import br.com.pucminas.mefit.workouts.dto.request.WorkoutDayRequest;
+import br.com.pucminas.mefit.workouts.dto.request.WorkoutPlanRequest;
+import br.com.pucminas.mefit.workouts.entity.ExerciseEntity;
+import br.com.pucminas.mefit.workouts.entity.WorkoutDayEntity;
+import br.com.pucminas.mefit.workouts.entity.WorkoutPlanEntity;
+import br.com.pucminas.mefit.workouts.repository.WorkoutPlanRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

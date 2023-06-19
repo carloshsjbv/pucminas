@@ -1,4 +1,4 @@
-package br.com.pucminas.user.entity;
+package br.com.pucminas.mefit.user.entity;
 
 public enum EnumStatus {
 

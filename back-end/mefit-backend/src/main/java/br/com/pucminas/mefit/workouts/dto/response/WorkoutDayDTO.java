@@ -1,4 +1,4 @@
-package br.com.pucminas.workouts.dto.response;
+package br.com.pucminas.mefit.workouts.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

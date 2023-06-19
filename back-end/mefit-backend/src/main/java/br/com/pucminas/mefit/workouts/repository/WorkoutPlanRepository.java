@@ -1,6 +1,6 @@
-package br.com.pucminas.workouts.repository;
+package br.com.pucminas.mefit.workouts.repository;
 
-import br.com.pucminas.workouts.entity.WorkoutPlanEntity;
+import br.com.pucminas.mefit.workouts.entity.WorkoutPlanEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package br.com.pucminas.workouts.dto.request;
+package br.com.pucminas.mefit.workouts.dto.request;
 
-import br.com.pucminas.workouts.entity.MuscularGroupEnum;
+import br.com.pucminas.mefit.workouts.entity.MuscularGroupEnum;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,10 +1,10 @@
-package br.com.pucminas.user.controller;
+package br.com.pucminas.mefit.user.controller;
 
-import br.com.pucminas.user.dto.request.UserRequestDTO;
-import br.com.pucminas.user.dto.response.UserResponseDTO;
-import br.com.pucminas.user.entity.EnumStatus;
-import br.com.pucminas.user.mapper.UserMapper;
-import br.com.pucminas.user.service.UserService;
+import br.com.pucminas.mefit.user.dto.request.UserRequestDTO;
+import br.com.pucminas.mefit.user.dto.response.UserResponseDTO;
+import br.com.pucminas.mefit.user.entity.EnumStatus;
+import br.com.pucminas.mefit.user.mapper.UserMapper;
+import br.com.pucminas.mefit.user.service.UserService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

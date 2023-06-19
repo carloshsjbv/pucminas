@@ -1,6 +1,6 @@
-package br.com.pucminas.workouts.dto.response;
+package br.com.pucminas.mefit.workouts.dto.response;
 
-import br.com.pucminas.workouts.entity.MuscularGroupEnum;
+import br.com.pucminas.mefit.workouts.entity.MuscularGroupEnum;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;

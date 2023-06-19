@@ -1,9 +1,9 @@
-package br.com.pucminas.workouts.controllers;
+package br.com.pucminas.mefit.workouts.controllers;
 
-import br.com.pucminas.workouts.dto.request.WorkoutPlanRequest;
-import br.com.pucminas.workouts.dto.response.WorkoutPlanDTO;
-import br.com.pucminas.workouts.mappers.WorkoutPlanMapper;
-import br.com.pucminas.workouts.service.WorkoutPlanService;
+import br.com.pucminas.mefit.workouts.dto.request.WorkoutPlanRequest;
+import br.com.pucminas.mefit.workouts.dto.response.WorkoutPlanDTO;
+import br.com.pucminas.mefit.workouts.mappers.WorkoutPlanMapper;
+import br.com.pucminas.mefit.workouts.service.WorkoutPlanService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
