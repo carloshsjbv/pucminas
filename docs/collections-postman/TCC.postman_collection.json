@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "18f400bf-7068-408a-8cd5-a834866baaf8",
+		"name": "TCC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Exercicio",
+			"item": [
+				{
+					"name": "Criar Exercicio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Agachamento\",\r\n  \"muscularGroup\": \"PERNA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/mefit/v1/exercises",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"exercises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Exercicios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/mefit/v1/exercises",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"exercises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Exercicios por Grupo Muscular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/mefit/v1/exercises?muscularGroupEnum=TRICEPS",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"exercises"
+							],
+							"query": [
+								{
+									"key": "muscularGroupEnum",
+									"value": "TRICEPS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Exercicio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Agachamento\",\r\n  \"muscularGroup\": \"PERNA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/mefit/v1/exercises/58",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"exercises",
+								"58"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PlanoTreino",
+			"item": [
+				{
+					"name": "Inserir Plano de Treino",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 2,\r\n  \"personalTrainerId\": 2,\r\n  \"reps\": 2,\r\n  \"series\": 15,\r\n  \"startDate\": \"2013-11-19\",\r\n  \"endDate\": \"2018-08-12\",\r\n  \"workoutDays\": [\r\n    {\r\n      \"weekDay\": \"Segunda-Feira\",\r\n      \"exerciseIds\": [\r\n        1,\r\n        2,\r\n        3,\r\n        4,\r\n        5,\r\n        11,\r\n        12,\r\n        13,\r\n        14\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Terça-Feira\",\r\n      \"exerciseIds\": [\r\n        23,\r\n        24,\r\n        25,\r\n        26,\r\n        27,\r\n        32,\r\n        33,\r\n        34\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Quarta-Feira\",\r\n      \"exerciseIds\": [\r\n        35,\r\n        36,\r\n        37,\r\n        38,\r\n        39,\r\n        43,\r\n        44,\r\n        45,\r\n        46\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Quinta-Feira\",\r\n      \"exerciseIds\": [\r\n        52,\r\n        53,\r\n        54,\r\n        55,\r\n        56,\r\n        13,\r\n        14,\r\n        15\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Sexta-Feira\",\r\n      \"exerciseIds\": [\r\n        23,\r\n        24,\r\n        25,\r\n        26,\r\n        27,\r\n        32,\r\n        33,\r\n        34\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/mefit/v1/workout-plans",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"workout-plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/mefit/v1/workout-plans/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"workout-plans",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Inserir Plano de Treino",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 2,\r\n  \"personalTrainerId\": 2,\r\n  \"reps\": 2,\r\n  \"series\": 15,\r\n  \"startDate\": \"2013-11-19T07:29:20\",\r\n  \"endDate\": \"2018-08-12T01:45:15\",\r\n  \"workoutDays\": [\r\n    {\r\n      \"weekDay\": \"Segunda-Feira\",\r\n      \"exerciseIds\": [\r\n        1,\r\n        2,\r\n        3,\r\n        4,\r\n        5,\r\n        11,\r\n        12,\r\n        13,\r\n        14\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Terça-Feira\",\r\n      \"exerciseIds\": [\r\n        23,\r\n        24,\r\n        25,\r\n        26,\r\n        27,\r\n        32,\r\n        33,\r\n        34\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Quarta-Feira\",\r\n      \"exerciseIds\": [\r\n        35,\r\n        36,\r\n        37,\r\n        38,\r\n        39,\r\n        43,\r\n        44,\r\n        45,\r\n        46\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Quinta-Feira\",\r\n      \"exerciseIds\": [\r\n        52,\r\n        53,\r\n        54,\r\n        55,\r\n        56,\r\n        13,\r\n        14,\r\n        15\r\n      ]\r\n    },\r\n    {\r\n      \"weekDay\": \"Sexta-Feira\",\r\n      \"exerciseIds\": [\r\n        23,\r\n        24,\r\n        25,\r\n        26,\r\n        27,\r\n        32,\r\n        33,\r\n        34\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/mefit/v1/workout-plans",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"workout-plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get por nome de usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/mefit/v1/users/root",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"users",
+								"root"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get por nome de usuario Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/mefit/v1/users/root",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"users",
+								"root"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/mefit/v1/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"mefit",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
