@@ -68,7 +68,7 @@ public class SendTrainingPlanCronJob {
     }
 
     @Async
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedDelay = 5, timeUnit = TimeUnit.MINUTES)
     public void sendTrainingPlanJob() {
 
         log.info("Send training plan JOB has started at - {} ", LocalDateTime.now());
