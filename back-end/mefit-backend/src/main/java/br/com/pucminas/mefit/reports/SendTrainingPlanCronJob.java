@@ -68,7 +68,7 @@ public class SendTrainingPlanCronJob {
     }
 
     @Async
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedDelay = 5, timeUnit = TimeUnit.MINUTES)
     public void sendTrainingPlanJob() {
 
         log.info("Send training plan JOB has started at - {} ", LocalDateTime.now());
@@ -81,24 +81,29 @@ public class SendTrainingPlanCronJob {
 
                 for (WorkoutPlanEntity workoutPlan : workoutPlans) {
 
-                    Path filePath;
-                    try {
-                        filePath = generateWorkoutPlanPdf(workoutPlan);
-                    } catch (IOException e) {
-                        log.error("Error while creating PDF file.");
-                        throw new RuntimeException(e);
+                    if (workoutPlan.getRetries() < 3) {
+
+                        Path filePath;
+
+                        workoutPlan.setRetries(workoutPlan.getRetries() + 1);
+
+                        try {
+                            filePath = generateWorkoutPlanPdf(workoutPlan);
+
+                            sendEmail(workoutPlan, filePath.toFile());
+
+                            workoutPlan.setSent(true);
+
+                            workoutPlansSentCount++;
+                        } catch (IOException e) {
+                            log.error("Error while creating PDF file.");
+                        }
+
+                        // update workout plan
+                        workoutPlanService.updateWorkoutPlan(workoutPlan);
                     }
 
-                    sendEmail(workoutPlan, filePath.toFile());
-
-                    workoutPlan.setSent(true);
-
-                    // update right after it is sent
-                    workoutPlanService.updateWorkoutPlan(workoutPlan);
-
-                    workoutPlansSentCount++;
-
-            }
+                }
         }
 
         log.info("{} workout plans sent - Send training plan JOB has ended at - {} ", workoutPlansSentCount, LocalDateTime.now());

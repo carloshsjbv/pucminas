@@ -44,6 +44,7 @@ public class WorkoutPlanService {
                 .series(workoutPlanRequest.getSeries())
                 .startDate(workoutPlanRequest.getStartDate())
                 .endDate(workoutPlanRequest.getEndDate())
+                .retries(0)
                 .active(true)
                 .build();
 
