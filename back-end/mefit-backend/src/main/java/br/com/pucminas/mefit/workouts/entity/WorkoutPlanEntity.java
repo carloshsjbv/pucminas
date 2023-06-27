@@ -67,6 +67,9 @@ public class WorkoutPlanEntity implements Serializable {
     @Builder.Default
     private Boolean sent = false;
 
+    @Column(name = "RETRIES", nullable = false)
+    private Integer retries;
+
     @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<WorkoutDayEntity> workoutDayEntities;
 

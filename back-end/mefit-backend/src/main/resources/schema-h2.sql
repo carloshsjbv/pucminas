@@ -7,6 +7,7 @@ CREATE TABLE `MEFIT`.`WORKOUT_PLAN` (
                                               `PERSONAL_ID` int NOT NULL,
                                               `REPS` int NOT NULL,
                                               `SERIES` int NOT NULL,
+                                              `RETRIES` int NOT NULL,
                                               `START_DATE` date NOT NULL,
                                               `END_DATE` date NOT NULL,
                                               `ACTIVE` boolean default true,
